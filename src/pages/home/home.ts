@@ -19,9 +19,14 @@ export class HomePage {
   }
 
 	add() {
-        this.todoList.push(this.todo);
-		this.dataService.save(this.todoList);
-        this.todo = "";
+		if(this.todo == "") {
+			null;
+		}
+		else {
+			this.todoList.push(this.todo);
+			this.dataService.save(this.todoList);
+			this.todo = "";
+		}
     }
 	
 	edit(item) {
