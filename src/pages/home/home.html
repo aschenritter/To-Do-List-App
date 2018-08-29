@@ -1,14 +1,37 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Mobile Development Midterm Project "To Do List" App
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  
+     <ion-item>
+        <ion-input [(ngModel)]="todo" placeholder="Enter task here..." type="text"></ion-input>
+     </ion-item>
+
+    <button ion-button full color="dark" (click)="add()">ADD</button>
+
+    <ion-list>
+            <ion-item-sliding *ngFor="let t of todoList">
+				<ion-item>
+					<ion-label>{{t}}</ion-label>
+					<ion-toggle color="dark"></ion-toggle>
+				</ion-item>
+				
+				<ion-item-options side="left">
+				<button ion-button outline color="dark" item-right   (click)="edit(t)">
+					<ion-icon ios="ios-create" md="md-create"></ion-icon>
+				</button>
+				
+				<button ion-button outline color="danger" item-right (click)="delete(t)" >
+					<ion-icon name="trash"></ion-icon>
+				</button>
+				
+				</ion-item-options>
+				
+            </ion-item-sliding>
+    </ion-list>
 </ion-content>
