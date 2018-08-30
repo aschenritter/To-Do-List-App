@@ -19,13 +19,13 @@ export class HomePage {
   }
 
 	add() {
-		if(this.todo == "") {
+		if(this.todo == null) {
 			null;
 		}
 		else {
 			this.todoList.push(this.todo);
 			this.dataService.save(this.todoList);
-			this.todo = "";
+			this.todo = null;
 		}
     }
 	
