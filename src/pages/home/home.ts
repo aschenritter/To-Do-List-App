@@ -34,7 +34,7 @@ export class HomePage {
         if (index > -1 && this.todo != "") {
             this.todoList[index] = this.todo;
 			this.dataService.save(this.todoList);
-			this.todo = "";
+			this.todo = null;
         }
 	}
 	
