@@ -8,7 +8,7 @@ import { DataProvider } from '../../providers/data/data';
 })
 export class HomePage {
 	todoList: string[] = [];
-    todo: string;
+    todo: string = "";
 	
   constructor(public navCtrl: NavController, public dataService: DataProvider) {
 	this.dataService.getData().then((todos) => {
@@ -19,22 +19,19 @@ export class HomePage {
   }
 
 	add() {
-		if(this.todo == null) {
-			null;
-		}
-		else {
+		if(this.todo.replace(/\s/g, "").length > 0) {
 			this.todoList.push(this.todo);
 			this.dataService.save(this.todoList);
-			this.todo = null;
+			this.todo = "";
 		}
     }
 	
 	edit(item) {
 		var index = this.todoList.indexOf(item, 0);
-        if (index > -1 && this.todo != "") {
+        if (index > -1 && this.todo.replace(/\s/g, "").length > 0) {
             this.todoList[index] = this.todo;
 			this.dataService.save(this.todoList);
-			this.todo = null;
+			this.todo = "";
         }
 	}
 	
